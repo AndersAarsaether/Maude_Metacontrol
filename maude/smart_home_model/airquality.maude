@@ -21,7 +21,7 @@ fmod AIRQUALITY is
   op getAirquality : Configuration -> AirqualityStatus .
   eq getAirquality(< AQ :Airquality | Value: AQS > CONF) = AQS .
 
-  *** Keep temperature within range
+  *** Keep air quality within range
   op safeAq : Int -> Int .
   ceq safeAq(N) = 10 if N > 10 .
   ceq safeAq(N) = -10 if N < -10 .
