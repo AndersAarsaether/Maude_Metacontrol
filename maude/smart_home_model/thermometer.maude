@@ -14,6 +14,7 @@ fmod THERMOMETER is
   var DG : Temperature .
   var T : Oid .
   var CONF : Configuration .
+  var N : Int .
 
   op getTemp : Configuration -> Temperature .
   eq getTemp(< T :Thermometer | Degrees: DG > CONF) = DG .
@@ -26,5 +27,10 @@ fmod THERMOMETER is
   ceq hot(DG) = true if DG > 30 .
   ceq hot(DG) = false if DG <= 30 .
 
+  *** Keep temperature within range
+  op safeTemp : Int -> Int .
+  ceq safeTemp(N) = 40 if N > 40 .
+  ceq safeTemp(N) = 10 if N < 10 .
+  eq safeTemp(N) = N [owise] .
 
 endfm

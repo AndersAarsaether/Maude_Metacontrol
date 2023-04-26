@@ -75,7 +75,7 @@ mod PHYSICS is
     {< T :Thermometer | Degrees: newDG >
     < AQ :Airquality | Value: newAQS >
     < Scheduler | Status: PhysicsChange, RuleApplied: true > CONF}
-    if newDG := DG + changeTempBy(CONF) /\ newAQS := AQS + changeAqBy(CONF)
+    if newDG := safeTemp(DG + changeTempBy(CONF)) /\ newAQS := safeAq(AQS + changeAqBy(CONF))
     [print "rule: [changeTempAq], Change Temp from " DG " to " newDG " and AQ from " AQS " to " newAQS] .
 
 endm
