@@ -19,12 +19,12 @@ fmod THERMOMETER is
   eq getTemp(< T :Thermometer | Degrees: DG > CONF) = DG .
 
   op cold : Temperature -> Bool .
-  ceq cold(DG) = true if DG <= 19 .
-  ceq cold(DG) = false if DG > 19 .
+  ceq cold(DG) = true if DG <= 16 .
+  ceq cold(DG) = false if DG > 16 .
 
   op hot : Temperature -> Bool .
-  ceq hot(DG) = true if DG > 21 .
-  ceq hot(DG) = false if DG <= 21 .
+  ceq hot(DG) = true if DG > 24 .
+  ceq hot(DG) = false if DG <= 24 .
 
 
 endfm
