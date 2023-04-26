@@ -7,7 +7,7 @@ fmod THERMOMETER is
   subsorts Thermometer < Configuration .
 
   sorts Temperature .
-  subsort Float < Temperature .
+  subsort Int < Temperature .
 
   op < _ :Thermometer | Degrees: _ > : Oid Temperature -> Thermometer [format (ntb b b b b b b o)] .
 
@@ -19,12 +19,12 @@ fmod THERMOMETER is
   eq getTemp(< T :Thermometer | Degrees: DG > CONF) = DG .
 
   op cold : Temperature -> Bool .
-  ceq cold(DG) = true if DG <= 19.0 .
-  ceq cold(DG) = false if DG > 19.0 .
+  ceq cold(DG) = true if DG <= 19 .
+  ceq cold(DG) = false if DG > 19 .
 
   op hot : Temperature -> Bool .
-  ceq hot(DG) = true if DG > 21.0 .
-  ceq hot(DG) = false if DG <= 21.0 .
+  ceq hot(DG) = true if DG > 21 .
+  ceq hot(DG) = false if DG <= 21 .
 
 
 endfm

@@ -5,7 +5,7 @@ fmod AIRQUALITY is
   subsort Airquality < Configuration .
 
   sort AirqualityStatus .
-  subsort Float < AirqualityStatus .
+  subsort Int < AirqualityStatus .
 
   op < _ :Airquality | Value: _ > : Oid AirqualityStatus -> Airquality [format (ntb b b b b b b o)] .
 
@@ -15,8 +15,8 @@ fmod AIRQUALITY is
 
 
   op aqok : AirqualityStatus -> Bool .
-  ceq aqok(AQS) = true if AQS > 1.0 .
-  ceq aqok(AQS) = false if AQS <= 1.0 .
+  ceq aqok(AQS) = true if AQS > 1 .
+  ceq aqok(AQS) = false if AQS <= 1 .
 
   op getAirquality : Configuration -> AirqualityStatus .
   eq getAirquality(< AQ :Airquality | Value: AQS > CONF) = AQS .
