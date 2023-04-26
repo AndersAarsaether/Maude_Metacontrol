@@ -1,13 +1,15 @@
+in ../model_dynamics/range.maude
 in actuators.maude
 
 fmod THERMOMETER is
   protecting ACTUATORS .
+  protecting RANGE .
 
   sorts Thermometer .
   subsorts Thermometer < Configuration .
 
   sorts Temperature .
-  subsort Int < Temperature .
+  subsort Range < Temperature .
 
   op < _ :Thermometer | Degrees: _ > : Oid Temperature -> Thermometer [format (ntb b b b b b b o)] .
 
@@ -19,12 +21,12 @@ fmod THERMOMETER is
   eq getTemp(< T :Thermometer | Degrees: DG > CONF) = DG .
 
   op cold : Temperature -> Bool .
-  ceq cold(DG) = true if DG <= 20 .
-  ceq cold(DG) = false if DG > 20 .
+  ceq cold(DG) = true if getRepresentedValue(DG) <= 20.0 .
+  ceq cold(DG) = false if getRepresentedValue(DG) > 20.0 .
 
   op hot : Temperature -> Bool .
-  ceq hot(DG) = true if DG > 30 .
-  ceq hot(DG) = false if DG <= 30 .
+  ceq hot(DG) = true if getRepresentedValue(DG) > 30.0 .
+  ceq hot(DG) = false if getRepresentedValue(DG) <= 30.0 .
 
 
 endfm
