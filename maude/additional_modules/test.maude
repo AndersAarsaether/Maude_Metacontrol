@@ -18,10 +18,10 @@ mod TEST is
 
   *** Initial configuration to the the Comfort controller
   op initComfort : -> TimedConfiguration .
-  eq initComfort = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 0.615, EffectAQ: -0.45, Broken: no >
-            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 0.3, EffectAQ: -0.125, Broken: no >
-            < "homeWindow" :Window | Status: closed, EffectTemp: -1.0, EffectAQ: 1.0, Broken: no >
-            < "homeThermometer" :Thermometer | Degrees: 20.5 >
+  eq initComfort = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 1, EffectAQ: -0.45, Broken: no >
+            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 1, EffectAQ: -0.125, Broken: no >
+            < "homeWindow" :Window | Status: closed, EffectTemp: -1, EffectAQ: 1.0, Broken: no >
+            < "homeThermometer" :Thermometer | Degrees: 20 >
             < "homeAirquality" :Airquality | Value: 2.0 >
             < "homeClock" :Clock | Timesteps: 0, Time: 0, TempLog: nil, AqLog: nil >
             < "homeComfortController" :ComfortController | Selected: true >
@@ -32,10 +32,10 @@ mod TEST is
 
   *** Initial configuration to test the Eco controller
   op initEco : -> TimedConfiguration .
-  eq initEco = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 0.615, EffectAQ: -0.45, Broken: no >
-            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 0.3, EffectAQ: -0.125, Broken: no >
-            < "homeWindow" :Window | Status: closed, EffectTemp: -1.0, EffectAQ: 1.0, Broken: no >
-            < "homeThermometer" :Thermometer | Degrees: 20.5 >
+  eq initEco = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 1, EffectAQ: -0.45, Broken: no >
+            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 1, EffectAQ: -0.125, Broken: no >
+            < "homeWindow" :Window | Status: closed, EffectTemp: -1, EffectAQ: 1.0, Broken: no >
+            < "homeThermometer" :Thermometer | Degrees: 20 >
             < "homeAirquality" :Airquality | Value: 2.0 >
             < "homeClock" :Clock | Timesteps: 0, Time: 0, TempLog: nil, AqLog: nil >
             < "homeEcoController" :EcoController | Selected: true >
@@ -46,10 +46,10 @@ mod TEST is
 
   *** Initial configuration to test the Metacontroller
   op initMetacontr : -> TimedConfiguration .
-  eq initMetacontr = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 0.615, EffectAQ: -0.45, Broken: no >
-            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 0.3, EffectAQ: -0.125, Broken: no >
-            < "homeWindow" :Window | Status: closed, EffectTemp: -1.0, EffectAQ: 1.0, Broken: no >
-            < "homeThermometer" :Thermometer | Degrees: 20.5 >
+  eq initMetacontr = {< "homeHeater" :Heater | Status: hOff, EffectTemp: 1, EffectAQ: -0.45, Broken: no >
+            < "homeWaterheater" :Waterheater | Status: whOff, EffectTemp: 1, EffectAQ: -0.125, Broken: no >
+            < "homeWindow" :Window | Status: closed, EffectTemp: -1, EffectAQ: 1.0, Broken: no >
+            < "homeThermometer" :Thermometer | Degrees: 20 >
             < "homeAirquality" :Airquality | Value: 2.0 >
             < "homeClock" :Clock | Timesteps: 0, Time: 0, TempLog: nil, AqLog: nil >
             < "homeComfortController" :ComfortController | Selected: false >

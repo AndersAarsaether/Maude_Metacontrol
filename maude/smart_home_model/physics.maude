@@ -35,19 +35,19 @@ mod PHYSICS is
   var N : Nat .
 
   *** Determine how much the temperature in the room changed, depending on the status of the actuators and the time
-  op changeTempBy : Configuration -> Float .
+  op changeTempBy : Configuration -> Nat .
   eq changeTempBy(< H :Heater | Status: fairlyhot, EffectTemp: ET, A > CONF) = ET + changeTempBy(CONF) .
-  eq changeTempBy(< H :Heater | Status: veryhot, EffectTemp: ET, A > CONF) = (2.0 * ET) + changeTempBy(CONF) .
+  eq changeTempBy(< H :Heater | Status: veryhot, EffectTemp: ET, A > CONF) = (2 * ET) + changeTempBy(CONF) .
   eq changeTempBy(< WH :Waterheater | Status: on, EffectTemp: ET, A > CONF) = ET + changeTempBy(CONF) .
   eq changeTempBy(< W :Window | Status: halfopen, EffectTemp: ET, A > CONF) = ET + changeTempBy(CONF) .
-  eq changeTempBy(< W :Window | Status: open, EffectTemp: ET, A > CONF) = (2.0 * ET) + changeTempBy(CONF) .
-  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -0.5 - variabilityEnvir(N, TS) + changeTempBy(CONF)
+  eq changeTempBy(< W :Window | Status: open, EffectTemp: ET, A > CONF) = (2 * ET) + changeTempBy(CONF) .
+  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -2 - variabilityEnvir(N, TS) + changeTempBy(CONF)
     if 0 <= TI and TI < 6 .
-  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -0.25 + variabilityEnvir(N, TS) + changeTempBy(CONF)
+  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -1 + variabilityEnvir(N, TS) + changeTempBy(CONF)
     if 6 <= TI and TI < 12 .
-  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -0.25 - variabilityEnvir(N, TS) + changeTempBy(CONF)
+  ceq changeTempBy(< C :Clock | Timesteps: TS, Time: TI, TempLog: TL, AqLog: AL > < Environment | Version: N > CONF) = -1 - variabilityEnvir(N, TS) + changeTempBy(CONF)
     if 18 <= TI .
-  eq changeTempBy(CONF) = 0.0 [owise] .
+  eq changeTempBy(CONF) = 0 [owise] .
 
   *** Determine how much the air quality in the room changed, depending on the status of the actuators
   op changeAqBy : Configuration -> Float .

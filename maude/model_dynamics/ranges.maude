@@ -1,0 +1,13 @@
+fmod RANGES is
+  protecting NAT .
+  protecting FLOAT .
+
+  sort Range .
+  subsort Configuration < Range .
+
+  sort TmpRange AqRange .
+  subsort Range < TmpRange .
+  subsort Range < AqRange .
+
+  op applyEffect : Int Range -> Range
+  eq applyEffect : Effect <Value: V, Max: N> -> <Value: V + Effect>

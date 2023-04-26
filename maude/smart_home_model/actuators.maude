@@ -1,6 +1,7 @@
 fmod ACTUATORS is
   protecting STRING .
   protecting FLOAT .
+  protecting INT .
 
   *** Actuator definition
   sorts Oid Heater Waterheater Window Actuator Configuration .
@@ -23,7 +24,7 @@ fmod ACTUATORS is
 
   *** The additional attributes of the heaters and window
   sorts EffectTemp EffectAQ Broken .
-  subsort Float < EffectTemp .              *** The effect indicates how much the actuator can decrease and increase the temperature in the room.
+  subsort Int < EffectTemp .              *** The effect indicates how much the actuator can decrease and increase the temperature in the room.
   subsort Float < EffectAQ .                *** The effect indicates how much the actuator can decrease and increase the air quality in the room.
   ops yes no : -> Broken .                  *** Indicates whether the actuator is broken or not.
 
