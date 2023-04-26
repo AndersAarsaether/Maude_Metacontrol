@@ -25,13 +25,14 @@ air_qualities = """(0,1) (1,-7) (2,-6) (3,8) (4,0) (5,1) (6,0) (7,3) (8,1) (9,-1
     -1) (10,12) (11,7) (12,5) (13,3) (14,2) (15,1) (16,0) (17,1) (18,0) (19,1) (20,15) (21,7) (22,6) (23,5) (0,4) (1,3) (2,2) (3,1) (4,0)
     (5,1) (6,0) 7,3"""
 
-test = """(0,1) (1,-7) (2,-6) (3,8) (4,0) (5,1) (6,0) (7,3) (8,1) (9,-1)"""
-
 good_temp_range = (20, 30)
 air_quality_limit = 0
 
 def get_tuples(string):
-    tuple_list = string.split()
+    single_line = string.replace(")\n", ") ")
+    single_line = single_line.replace("\n", "")
+    normalized = single_line.replace("    ", "")
+    tuple_list = normalized.split()
     if not "(" in tuple_list[-1]:
       tuple_list[-1] = f"({tuple_list[-1]})"
     tuples = []
@@ -40,11 +41,26 @@ def get_tuples(string):
     return tuples;
 
 def analyse_temperature(tuples):
-   errors = 0
-   for tuple in tuples:
-      errors += (tuple[1] < good_temp_range[1] and tuple[1] < good_temp_range)
-   
+  errors = 0
+  for tuple in tuples:
+      if tuple[1] < good_temp_range[0] or tuple[1] > good_temp_range[1]:
+        errors += 1
+  return errors
+
+def analyse_air_qualities(tuples):
+  errors = 0
+  for tuple in tuples:
+      if tuple[1] < air_quality_limit:
+        errors += 1
+  return errors
+
+def display_result(temp_errors, aq_errors):
+  print(f"Temperature errors: {temp_errors}\nAir quality errors: {aq_errors}\nTotal errors:\t    {temp_errors + aq_errors}")
 
 temperature_tuples = get_tuples(temperatures)
 air_quality_tuples = get_tuples(air_qualities)
 
+temp_errors = analyse_temperature(temperature_tuples)
+aq_errors = analyse_air_qualities(air_quality_tuples)
+
+display_result(temp_errors, aq_errors)
