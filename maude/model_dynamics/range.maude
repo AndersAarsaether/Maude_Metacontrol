@@ -1,0 +1,34 @@
+fmod RANGE is
+
+  protecting NAT .
+  protecting FLOAT .
+  protecting INT .
+
+  *** Vars
+  var E : Int .
+  var V : Nat .
+  var M : Nat .
+  var Med : Float .
+  var Dev : Float .
+  var Min : Int .
+  var Max : Int .
+  var Val : Int .
+
+  *** Range type
+  sort Range .
+  op range : Nat Nat Float Float -> Range .
+
+  *** Helper ops
+  op clamp : Int Int Int -> Int .
+  eq clamp(Min, Val, Max) = min(max(Min, Val), Max) .
+
+  op toFloat : Nat -> Float .
+
+  *** Range ops
+  op applyEffect : Int Range -> Range .
+  eq applyEffect(E, range(V, M, Med, Dev)) = range(clamp(0, V + E, M), M, Med, Dev) .
+
+  op getRepresentedValue : Range -> Float .
+  eq getRepresentedValue(range(V, M, Med, Dev)) = toFloat(V) / toFloat(M) * (Med + Dev) .
+
+endfm

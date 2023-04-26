@@ -1,10 +1,12 @@
 in controllers_smart_home.maude
+in ../model_dynamics/range.maude
 
 mod COMFORTCONTROLLER is
   protecting CONTROLLERS .
+  protecting RANGE .
 
   vars H W WH T C CC AQ : Oid .
-  var DG : Temperature .
+  var DG : Range .
   var WS : WindowStatus .
   var AQS : AirqualityStatus .
   var TI : Time .
