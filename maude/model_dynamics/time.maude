@@ -7,6 +7,7 @@ mod TIME is
   var TS : Timesteps .
   var TI : Time .
   var N : Nat .
+  var I : Int .
   var QAS : QaStatus .
   var QAL : List{Bool} .
   vars CONF : Configuration .
