@@ -7,30 +7,24 @@ fmod THERMOMETER is
   subsorts Thermometer < Configuration .
 
   sorts Temperature .
-  subsort Int < Temperature .
+  subsort Float < Temperature .
 
   op < _ :Thermometer | Degrees: _ > : Oid Temperature -> Thermometer [format (ntb b b b b b b o)] .
 
   var DG : Temperature .
   var T : Oid .
   var CONF : Configuration .
-  var N : Int .
 
   op getTemp : Configuration -> Temperature .
   eq getTemp(< T :Thermometer | Degrees: DG > CONF) = DG .
 
   op cold : Temperature -> Bool .
-  ceq cold(DG) = true if DG <= 190 .
-  ceq cold(DG) = false if DG > 190 .
+  ceq cold(DG) = true if DG <= 19.0 .
+  ceq cold(DG) = false if DG > 19.0 .
 
   op hot : Temperature -> Bool .
-  ceq hot(DG) = true if DG > 210 .
-  ceq hot(DG) = false if DG <= 210 .
+  ceq hot(DG) = true if DG > 21.0 .
+  ceq hot(DG) = false if DG <= 21.0 .
 
-  *** Keep temperature within range
-  op safeTemp : Int -> Int .
-  ceq safeTemp(N) = 1000 if N > 1000 .
-  ceq safeTemp(N) = -1000 if N < -1000 .
-  eq safeTemp(N) = N [owise] .
 
 endfm
