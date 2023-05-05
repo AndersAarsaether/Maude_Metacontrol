@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "check": "deno run -A log_analysis/analyse_log.ts"
+  }
+}
