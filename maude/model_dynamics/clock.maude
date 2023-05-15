@@ -15,7 +15,7 @@ fmod CLOCK is
   op nil : -> TVPList [ctor] .
   op __ : TVPList TVPList -> TVPList [ctor assoc id: nil] .
 
-  op (_, _) : Timesteps Float -> TimeValuePair .
+  op (_, _) : Timesteps Int -> TimeValuePair .
 
   *** Timed configuration is used in some rules to ensure that they are only applied to full configurations (not to only parts of them)
   op {_} : Configuration -> TimedConfiguration .
